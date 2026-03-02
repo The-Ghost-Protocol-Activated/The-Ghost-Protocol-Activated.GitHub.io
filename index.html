@@ -501,6 +501,7 @@
         <nav class="nav-links-vertical">
             <a href="#home" class="nav-link-vert">HOME</a>
             <a href="#" class="nav-link-vert" id="nav-intel" onclick="blogNav();return false;">📋 INTEL ARCHIVE</a>
+            <a href="#sourcecode" class="nav-link-vert">📁 THE SOURCE CODE</a>
             <a href="#secvault" class="nav-link-vert">🔒 SECVAULT</a>
             <a href="#osint" class="nav-link-vert">🛰 OSINT</a>
         </nav>
@@ -701,6 +702,65 @@
                 </div>
 
                 <div class="secvault-disclaimer"><i class="fa-solid fa-shield-halved"></i><span>Designed exclusively for <strong>lawful, defensive privacy</strong>. Contains no intrusion, scanning, or exploitation capabilities. All encryption is symmetric and reversible only by the password holder.</span></div>
+            </section>
+        </div>
+
+        <!-- THE SOURCE CODE SECTION -->
+        <div class="full-width-section" id="sourcecode" style="scroll-margin-top:1rem;">
+            <section class="section">
+                <div class="blog-hdr">
+                    <div class="blog-stamp"><span>CLASSIFIED</span><span>PROJECT DOSSIER</span></div>
+                    <h2 class="blog-htitle"><i class="fa-solid fa-terminal"></i> // THE SOURCE CODE — BATCH SCRIPT TOOLKIT</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <p class="bio-text" style="margin-bottom:1.5vh;">
+                    A collection of <span class="highlight">advanced Windows batch scripts</span> engineered for systematic data collection, forensic documentation, and authorized system migration. Designed for environments where the operator already holds <span class="highlight">legitimate administrative rights</span>.
+                </p>
+
+                <div class="secvault-features">
+                    <div class="sv-feature">
+                        <div class="sv-feature-icon"><i class="fa-solid fa-hard-drive"></i></div>
+                        <div class="sv-feature-body">
+                            <div class="sv-feature-title">all_drives.bat</div>
+                            <p class="sv-feature-desc">Iterates every drive letter A: through Z:, copying data into an organized <code>SRC\Drives\[DriveLetter]</code> hierarchy. Includes comprehensive capacity warnings and automatic abort when the destination drive reaches capacity.</p>
+                            <div class="sv-feature-tags"><span class="sv-tag">Drive Detection</span><span class="sv-tag">Structured Output</span><span class="sv-tag">Capacity Guard</span></div>
+                        </div>
+                    </div>
+                    <div class="sv-feature">
+                        <div class="sv-feature-icon"><i class="fa-solid fa-folder-open"></i></div>
+                        <div class="sv-feature-body">
+                            <div class="sv-feature-title">all_public.bat</div>
+                            <p class="sv-feature-desc">Targets shared and public directories — <code>C:\Users\Public</code>, <code>C:\Shared</code>, <code>C:\Public</code>, <code>C:\Common</code> — and mirrors them into a clean <code>SRC\Public\</code> and <code>SRC\Shared\</code> output structure.</p>
+                            <div class="sv-feature-tags"><span class="sv-tag">Public Folders</span><span class="sv-tag">Shared Dirs</span><span class="sv-tag">Organized Output</span></div>
+                        </div>
+                    </div>
+                    <div class="sv-feature">
+                        <div class="sv-feature-icon"><i class="fa-solid fa-box-archive"></i></div>
+                        <div class="sv-feature-body">
+                            <div class="sv-feature-title">Compilation &amp; Deployment</div>
+                            <p class="sv-feature-desc">Scripts are compiled to standalone executables via <strong>Advanced BAT to EXE Converter</strong> — enabling custom icons, embedded version metadata, and silent execution without an exposed command prompt window for clean operational deployment.</p>
+                            <div class="sv-feature-tags"><span class="sv-tag">BAT→EXE</span><span class="sv-tag">Icon Embed</span><span class="sv-tag">Silent Mode</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="secvault-stack" style="margin-top:1.5vh;">
+                    <div class="sv-stack-title"><i class="fa-solid fa-layer-group"></i> TECHNICAL FEATURES</div>
+                    <div class="sv-stack-items">
+                        <div class="sv-stack-item"><span class="sv-stack-icon">⚙️</span><span class="sv-stack-name">Elevated Privileges</span><span class="sv-stack-role">Admin Required</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">🛡️</span><span class="sv-stack-name">Error Handling</span><span class="sv-stack-role">Auto-abort</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">📂</span><span class="sv-stack-name">Structured Output</span><span class="sv-stack-role">File Hierarchy</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">📋</span><span class="sv-stack-name">Comprehensive Logs</span><span class="sv-stack-role">Real-time Feedback</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">💾</span><span class="sv-stack-name">Capacity Aware</span><span class="sv-stack-role">Space Warnings</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">🪟</span><span class="sv-stack-name">Windows Batch</span><span class="sv-stack-role">Runtime</span></div>
+                    </div>
+                </div>
+
+                <div class="secvault-disclaimer" style="margin-top:1.5vh;">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Intended for <strong>legitimate forensic analysis, authorized data migration, system administration, and data recovery operations</strong> in environments where the user already holds the requisite administrative rights.</span>
+                </div>
             </section>
         </div>
 
