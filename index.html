@@ -502,6 +502,7 @@
             <a href="#home" class="nav-link-vert">HOME</a>
             <a href="#" class="nav-link-vert" id="nav-intel" onclick="blogNav();return false;">📋 INTEL ARCHIVE</a>
             <a href="#sourcecode" class="nav-link-vert">📁 THE SOURCE CODE</a>
+            <a href="#clamav" class="nav-link-vert">🛡️ CRON JOB — CLAMAV</a>
             <a href="#secvault" class="nav-link-vert">🔒 SECVAULT</a>
             <a href="#osint" class="nav-link-vert">🛰 OSINT</a>
         </nav>
@@ -761,6 +762,66 @@
                 <div class="secvault-disclaimer" style="margin-top:1.5vh;">
                     <i class="fa-solid fa-shield-halved"></i>
                     <span>Intended for <strong>legitimate forensic analysis, authorized data migration, system administration, and data recovery operations</strong> in environments where the user already holds the requisite administrative rights.</span>
+                </div>
+            </section>
+        </div>
+
+        <!-- CRON JOB — CLAMAV SECTION -->
+        <div class="full-width-section" id="clamav" style="scroll-margin-top:1rem;">
+            <section class="section">
+                <div class="blog-hdr">
+                    <div class="blog-stamp"><span>CLASSIFIED</span><span>PROJECT DOSSIER</span></div>
+                    <h2 class="blog-htitle"><i class="fa-solid fa-shield-virus"></i> // CRON JOB — CLAMAV AUTOMATED SCANNER</h2>
+                    <div class="section-line"></div>
+                    <a href="https://github.com/The-Ghost-Protocol-Activated/CRON-Job---ClamAV" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:0.75rem;font-size:0.68rem;letter-spacing:1.5px;color:var(--text-muted);text-decoration:none;border:1px solid var(--border);padding:0.4rem 0.85rem;font-family:var(--font-mono);transition:all 0.2s;" onmouseover="this.style.color='var(--accent-amber)';this.style.borderColor='var(--accent-amber)';this.style.background='rgba(230,180,80,0.05)'" onmouseout="this.style.color='var(--text-muted)';this.style.borderColor='var(--border)';this.style.background='transparent'"><i class="fa-brands fa-github"></i> VIEW REPOSITORY</a>
+                </div>
+
+                <p class="bio-text" style="margin-bottom:1.5vh;">
+                    A <span class="highlight">production-grade Bash script</span> for Debian-based systems that automates ClamAV antivirus scans via CRON. Engineered for <span class="highlight">scheduled threat detection</span>, automatic signature updates, quarantine management, and operational log rotation — all without manual intervention.
+                </p>
+
+                <div class="secvault-features">
+                    <div class="sv-feature">
+                        <div class="sv-feature-icon"><i class="fa-solid fa-rotate"></i></div>
+                        <div class="sv-feature-body">
+                            <div class="sv-feature-title">Auto-Update &amp; Scan</div>
+                            <p class="sv-feature-desc">Runs <code>freshclam</code> before every scan to pull the latest virus definitions, then performs a full recursive scan of any configured directory. Ensures zero-day signatures are always current at scan time.</p>
+                            <div class="sv-feature-tags"><span class="sv-tag">freshclam</span><span class="sv-tag">Recursive</span><span class="sv-tag">Pre-scan Update</span></div>
+                        </div>
+                    </div>
+                    <div class="sv-feature">
+                        <div class="sv-feature-icon"><i class="fa-solid fa-box-archive"></i></div>
+                        <div class="sv-feature-body">
+                            <div class="sv-feature-title">Quarantine &amp; Alerting</div>
+                            <p class="sv-feature-desc">Infected files are automatically <strong>moved</strong> to an isolated quarantine directory — never silently deleted. Optional <code>mailutils</code> integration dispatches an email alert with the full scan log attached whenever a threat is detected.</p>
+                            <div class="sv-feature-tags"><span class="sv-tag">Quarantine</span><span class="sv-tag">Email Alert</span><span class="sv-tag">Log Attached</span></div>
+                        </div>
+                    </div>
+                    <div class="sv-feature">
+                        <div class="sv-feature-icon"><i class="fa-solid fa-file-lines"></i></div>
+                        <div class="sv-feature-body">
+                            <div class="sv-feature-title">Log Rotation &amp; CRON Ready</div>
+                            <p class="sv-feature-desc">Every scan produces a timestamped log file under <code>/var/log/clamav/</code>. The script self-manages log retention, purging entries older than a configurable threshold. Drop a single line into root's crontab and it runs unattended.</p>
+                            <div class="sv-feature-tags"><span class="sv-tag">Timestamped Logs</span><span class="sv-tag">Auto-cleanup</span><span class="sv-tag">CRON Integration</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="secvault-stack" style="margin-top:1.5vh;">
+                    <div class="sv-stack-title"><i class="fa-solid fa-layer-group"></i> TECHNICAL STACK</div>
+                    <div class="sv-stack-items">
+                        <div class="sv-stack-item"><span class="sv-stack-icon">🛡️</span><span class="sv-stack-name">ClamAV</span><span class="sv-stack-role">AV Engine</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">🐧</span><span class="sv-stack-name">Debian / Ubuntu</span><span class="sv-stack-role">Target OS</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">⏱️</span><span class="sv-stack-name">CRON</span><span class="sv-stack-role">Scheduler</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">📧</span><span class="sv-stack-name">mailutils</span><span class="sv-stack-role">Alerting</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">📋</span><span class="sv-stack-name">Timestamped Logs</span><span class="sv-stack-role">/var/log/clamav</span></div>
+                        <div class="sv-stack-item"><span class="sv-stack-icon">🔒</span><span class="sv-stack-name">Root Execution</span><span class="sv-stack-role">Full FS Access</span></div>
+                    </div>
+                </div>
+
+                <div class="secvault-disclaimer" style="margin-top:1.5vh;">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Designed exclusively for <strong>lawful, defensive system hardening</strong>. Requires pre-existing root privileges on the host. No exploitation, scanning of external hosts, or intrusion capabilities. All file operations are local and reversible.</span>
                 </div>
             </section>
         </div>
