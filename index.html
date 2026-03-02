@@ -712,7 +712,6 @@
                     <div class="blog-stamp"><span>CLASSIFIED</span><span>PROJECT DOSSIER</span></div>
                     <h2 class="blog-htitle"><i class="fa-solid fa-terminal"></i> // THE SOURCE CODE — BATCH SCRIPT TOOLKIT</h2>
                     <div class="section-line"></div>
-                    <a href="https://github.com/The-Ghost-Protocol-Activated/The-Source-Code" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:0.75rem;font-size:0.68rem;letter-spacing:1.5px;color:var(--text-muted);text-decoration:none;border:1px solid var(--border);padding:0.4rem 0.85rem;font-family:var(--font-mono);transition:all 0.2s;" onmouseover="this.style.color='var(--accent-amber)';this.style.borderColor='var(--accent-amber)';this.style.background='rgba(230,180,80,0.05)'" onmouseout="this.style.color='var(--text-muted)';this.style.borderColor='var(--border)';this.style.background='transparent'"><i class="fa-brands fa-github"></i> VIEW REPOSITORY</a>
                 </div>
 
                 <p class="bio-text" style="margin-bottom:1.5vh;">
@@ -1255,9 +1254,32 @@
     })();
 </script>
 <script>
-var BLOG_API='http://localhost:8080/api/posts';
 var _bc={};
 var _posts=[];
+
+// Hardcoded posts — no backend required
+var STATIC_POSTS = [
+  {
+    id: 1,
+    slug: 'golang-deep-dive',
+    title: 'Golang: Statically Typed, Compiled, and Concurrent',
+    excerpt: "A deep dive into Go's static typing, compilation, and revolutionary concurrency model.",
+    content: `Go (often called Golang) is an open-source, statically typed programming language developed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. It was designed to address the challenges of large-scale software development, offering the performance of C++ with the simplicity of Python.
+
+In programming, Static Typing means that the type of every variable (like an integer, a string, or a boolean) is known at compile time rather than at runtime. In Go, once you declare a variable as a specific type, it cannot change. This acts as a safety net, catching errors before you even run your program.
+
+Compiled means your human-readable source code is translated entirely into machine code (binary) before the program ever runs. Go is a strictly compiled language, which provides several massive advantages over interpreted languages like Python or JavaScript.
+
+Go's ability to handle high concurrency is its most famous strength, allowing a single server to manage millions of simultaneous tasks with minimal resources. Instead of heavy OS threads, Go uses Goroutines—extremely lightweight, virtual threads managed by the Go runtime. Think of Goroutines as "functions on steroids." They start at just 2KB, whereas an OS thread takes about 1MB. You don't need complex boilerplate: To run a function concurrently, you just prefix it with "go".
+
+Furthermore, unlike fixed-size OS threads, goroutine stacks grow and shrink automatically. In Go, pgxpool is a concurrency-safe connection pool for the pgx PostgreSQL driver. It is the standard way to manage database connections for high-performance PostgreSQL applications in 2026.`,
+    is_published: true,
+    tags: ['Golang', 'Goroutines', 'PostgreSQL'],
+    published_at: '2026-03-02T00:00:00Z',
+    created_at: '2026-03-02T00:00:00Z',
+    updated_at: '2026-03-02T00:00:00Z'
+  }
+];
 
 function blogFmtDate(ds){
     if(!ds)return'CLASSIFIED';
@@ -1308,11 +1330,8 @@ function blogRenderDetail(post){
     document.getElementById('blog-detail-content').innerHTML='<div class="blog-detail-hdr"><div class="blog-detail-stamp"><span>CLASSIFIED</span><span>TOP SECRET // SCI</span></div><span class="blog-detail-date">DECLASSIFIED: '+blogFmtDate(post.published_at)+'</span><h1 class="blog-detail-title">'+post.title+'</h1>'+tags+'</div><div class="blog-detail-body">'+body+'</div><div class="blog-detail-foot"><div class="blog-docinfo"><p>DOCUMENT ID: '+String(post.id).padStart(6,'0')+'</p><p>CREATED: '+blogFmtDate(post.created_at)+'</p><p>LAST MODIFIED: '+blogFmtDate(post.updated_at)+'</p></div></div>';
 }
 function blogInit(){
-    blogSetGrid('<div class="blog-loading"><div class="blog-spin"></div><span>CONNECTING TO ARCHIVE...</span></div>');
-    fetch(BLOG_API)
-        .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text();})
-        .then(function(t){if(!t||!t.trim())throw new Error('Server returned empty response');blogRenderGrid(JSON.parse(t));})
-        .catch(function(e){blogOffline(e.message);});
+    // Load from static hardcoded data — no backend required
+    blogRenderGrid(STATIC_POSTS);
 }
 blogInit();
 </script>
