@@ -1340,6 +1340,22 @@ Furthermore, unlike fixed-size OS threads, goroutine stacks grow and shrink auto
     published_at: '2026-03-02T00:00:00Z',
     created_at: '2026-03-02T00:00:00Z',
     updated_at: '2026-03-02T00:00:00Z'
+  },
+  {
+    id: 2,
+    slug: 'golang-dependencies',
+    title: 'Bridging the Gap: How Go Modules Map to the Node.js Ecosystem',
+    excerpt: "Think of go.mod as your project's manifest and go.sum as its cryptographic security lock, perfectly mirroring the roles of package.json and package-lock.json in the Node.js world.",
+    content: `For developers transitioning from Node.js, the transition to Go's dependency management is intuitive because the roles of the files are nearly identical. The go.mod file acts as your project's manifest, serving the same purpose as a package.json. It defines the module's path (its name and location), the Go version the project targets, and a list of specific dependency versions required for a successful build. Unlike the often bloated package.json, go.mod is minimalist and is primarily managed by the Go toolchain via commands like go mod tidy, which automatically adds missing modules or removes unused ones to keep the file lean.
+
+The go.sum file serves as the equivalent to package-lock.json, but with a much heavier emphasis on security and integrity. While a package-lock.json maps out the entire dependency tree to ensure reproducible installs, go.sum contains a list of cryptographic hashes for every dependency. This ensures that the source code of a library has not been tampered with or changed since the last time it was recorded. If a dependency's content changes on a remote server while its version tag remains the same, Go will detect the mismatch against the go.sum file and refuse to build, providing a built-in defense against supply-chain attacks.
+
+A key conceptual shift between the two ecosystems is how they handle the physical storage of these files. In Node.js, your dependencies are typically "vendored" into a local node_modules folder, which can lead to significant disk usage across multiple projects. Go, however, uses a global cache. The go.mod and go.sum files tell the Go compiler exactly which versions to pull from this central cache during the build process. This keeps your project directories clean while maintaining the same level of version strictness and reproducibility you would expect from the npm ecosystem.`,
+    is_published: true,
+    tags: ['Golang', 'Go Modules'],
+    published_at: '2026-03-02T00:00:00Z',
+    created_at: '2026-03-02T00:00:00Z',
+    updated_at: '2026-03-02T00:00:00Z'
   }
 ];
 
