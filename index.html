@@ -568,6 +568,13 @@
     <source src="https://cdn.jsdelivr.net/gh/The-Ghost-Protocol-Activated/The-Ghost-Protocol-Activated.github.io@main/41042-427854697.mp4" type="video/mp4" />
     Your browser does not support HTML5 video.
   </video>
+  <script>
+    const bgVideo = document.querySelector('video.bg-video');
+    bgVideo.muted = true;
+    bgVideo.play().catch(() => {
+      document.addEventListener('click', () => bgVideo.play(), { once: true });
+    });
+  </script>
 
   <!-- Hero Section -->
   <main>
@@ -632,7 +639,7 @@
         <span class="skill-tag">Linux / Windows</span>
       </div>
       <p class="about-contact-hint">
-        Interested in working together? Reach me at <a href="/cdn-cgi/l/email-protection#4d20202c252423292c3f2c39232875750d2a202c2421632e2220"><span class="__cf_email__" data-cfemail="adc0c0ccc5c4c3c9ccdfccd9c3c89595edcac0ccc4c183cec2c0">[email&#160;protected]</span></a>
+        Interested in working together? Reach me at <a href="mailto:mmahindaratne88@gmail.com">mmahindaratne88@gmail.com</a>
       </p>
     </div>
   </section>
@@ -667,7 +674,7 @@
   <!-- Footer -->
   <footer>
     <p>Mahen Mahindaratne</p>
-    <p>Email: <a href="/cdn-cgi/l/email-protection#b9d4d4d8d1d0d7ddd8cbd8cdd7dc8181f9ded4d8d0d597dad6d4"><span class="__cf_email__" data-cfemail="3a57575b5253545e5b485b4e545f02027a5d575b535614595557">[email&#160;protected]</span></a></p>
+    <p>Email: <a href="mailto:mmahindaratne88@gmail.com">mmahindaratne88@gmail.com</a></p>
     <p>Video by <a href="https://pixabay.com/users/monitorfantasma-8075269/?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=41042">Josué Aguirre</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=41042">Pixabay</a></p>
   </footer>
 
