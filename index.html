@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>mahen-mahindaratne.online</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="author" content="The Ghost Protocol">
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Background Video */
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.30); 
+    }
+
+    /* Date/Time Bar */
+    .datetime-bar {
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 12px;
+      padding: 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      gap: 12px;
+    }
+
+    .datetime-bar .time-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .datetime-bar .time-label {
+      color: #9ca3af;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .datetime-bar .time-value {
+      color: #eab308;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+
+
+    /* Navigation */
+    nav {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 16px;
+      margin-top: 40px;
+      position: fixed;
+      top: 32px;
+      width: 100%;
+      z-index: 40;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-left h1 {
+      font-size: 24px;
+      letter-spacing: 0.1em;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      font-size: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .social-icons a:hover {
+      color: #eab308;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      text-transform: uppercase;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-menu a:hover {
+      color: #eab308;
+    }
+
+    /* Hero Section */
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      padding: 0 16px;
+    }
+
+    main .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    main .content {
+      position: relative;
+      z-index: 10;
+    }
+
+    main h1 {
+      font-size: 48px;
+      font-family: serif;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    main .app-link {
+      font-size: 18px;
+      font-weight: bold;
+      color: #eee8d5; 
+      text-decoration: none;
+      border: 2px solid #FFCC20;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    main .app-link:hover {
+      background-color: #A88D37;
+      color: #eee8d5; 
+      border-color: #FFCC20;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+    }
+
+    /* Projects Section */
+    .projects-section {
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 64px 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .projects-container {
+      max-width: auto;
+      padding: 10px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .projects-container h2 {
+      font-size: 36px;
+      margin-bottom: 24px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 640px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .project-card {
+      display: block;
+      background: #374151;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      background: #4b5563;
+      transform: scale(1.05);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .project-card-content {
+      padding: 16px;
+      text-align: left;
+    }
+
+    .project-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .project-card p {
+      font-size: 14px;
+      color: #d1d5db;
+    }
+
+    /* YouTube Videos Section */
+    .videos-section {
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 64px 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .videos-container {
+      max-width: auto;
+      padding: 20px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .videos-container h2 {
+      font-size: 36px;
+      margin-bottom: 24px;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .videos-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .video-card {
+      background: #374151;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-embed {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+
+    .video-card-content {
+      padding: 16px;
+      text-align: left;
+    }
+
+    .video-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .video-card p {
+      font-size: 14px;
+      color: #d1d5db;
+      line-height: 1.4;
+    }
+
+    /* About Section */
+    .about-section {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 80px 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .about-container {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-container h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .about-divider {
+      width: 50px;
+      height: 3px;
+      background: #eab308;
+      margin: 0 auto 32px;
+      border-radius: 2px;
+    }
+
+    .about-container p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: #d1d5db;
+      margin-bottom: 16px;
+    }
+
+    .about-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .skill-tag {
+      background: rgba(234, 179, 8, 0.12);
+      border: 1px solid rgba(234, 179, 8, 0.4);
+      color: #fde68a;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .about-contact-hint {
+      margin-top: 36px;
+      font-size: 15px;
+      color: #9ca3af;
+    }
+
+    .about-contact-hint a {
+      color: #eab308;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .about-contact-hint a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 64px 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .contact-container {
+      max-width: 896px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-container h2 {
+      font-size: 36px;
+      margin-bottom: 32px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      text-align: left;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .form-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      outline: none;
+      transition: box-shadow 0.2s;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #9ca3af;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      box-shadow: 0 0 0 2px #eab308;
+    }
+
+    .submit-container {
+      text-align: center;
+    }
+
+     .form-status {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .submit-btn {
+      background: #eab308;
+      color: black;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: #ca8a04;
+    }
+
+    /* Footer */
+    footer {
+      background: black;
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      padding: 32px 0;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    footer p:first-child {
+      margin-bottom: 8px;
+    }
+
+    footer p:last-child {
+      margin-top: 8px;
+      color: #6b7280;
+    }
+
+    footer a {
+      text-decoration: underline;
+      color: inherit;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: #eab308;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .nav-left {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      main h1 {
+        font-size: 32px;
+      }
+
+      .projects-container h2,
+      .videos-container h2,
+      .about-container h2,
+      .contact-container h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Date/Time Bar -->
+  <div class="datetime-bar">
+    <div class="time-info">
+      <span class="time-label" id="time-location">Detecting location...</span>
+      <span class="time-value" id="local-time">--:--:--</span>
+    </div>
+  </div>
+
+   <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-left">
+        <h1>Mahen Mahindaratne</h1>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://github.com/The-Ghost-Protocol-Activated" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Background Video -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="https://cdn.jsdelivr.net/gh/The-Ghost-Protocol-Activated/The-Ghost-Protocol-Activated.github.io@main/41042-427854697.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Hero Section -->
+  <main>
+    <div id="home" class="overlay"></div>
+    <div class="content">
+      <h1 aria-label="Hotel logo">Welcome to My Portfolio</h1>
+    </div>
+  </main>
+
+  <section id="projects" class="projects-section">
+    <div class="projects-container">
+      <h2>My Projects</h2>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <a href="https://the-continental-4y3n.onrender.com/" target="_blank" class="project-card">
+          <img src="project_1.jpg" alt="Project 1 Thumbnail">
+          <div class="project-card-content">
+            <h3>The Continental</h3>
+            <p>An unofficial fan project, created purely as a design and development exercise in tribute to the world of John Wick.</p>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+  
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <h2>About Me</h2>
+      <div class="about-divider"></div>
+      <p>
+        I'm a hobby developer with a passion for building robust, scalable systems. My focus lies in high-concurrency architectures, secure authentication flows, and seamless database migrations — crafting back-end solutions that are both performant and reliable.
+      </p>
+      <p>
+        My server-side language of choice is <strong>Go (Golang)</strong>, paired with <strong>MongoDB</strong> and <strong>PostgreSQL</strong> for data persistence, <strong>Redis</strong> for caching, and <strong>Docker</strong> for containerised deployments. I'm equally comfortable on Windows and Debian-based systems, writing batch scripts, Bash scripts, and scheduling CRON jobs as needed.
+      </p>
+      <div class="about-skills">
+        <span class="skill-tag">Go (Golang)</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Redis</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Bash Scripting</span>
+        <span class="skill-tag">CRON Jobs</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">Linux / Windows</span>
+      </div>
+      <p class="about-contact-hint">
+        Interested in working together? Reach me at <a href="mailto:mmahindaratne88@gmail.com">mmahindaratne88@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="contact-container">
+      <h2>Let's get in touch!</h2>
+      <form id="contact-form" class="contact-form" method="POST" action="/contact">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <div class="submit-container">
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+        <div class="form-status" id="form-status"></div>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>Mahen Mahindaratne</p>
+    <p>Email: <a href="mailto:mmahindaratne88@gmail.com">mmahindaratne88@gmail.com</a></p>
+    <p>Video by <a href="https://pixabay.com/users/monitorfantasma-8075269/?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=41042">Josué Aguirre</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=41042">Pixabay</a></p>
+  </footer>
+
+  <!-- Scripts -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // --- IP-based Time Detection ---
+  let userTimezone = 'Asia/Colombo'; // default fallback
+  let userCity = 'Colombo';
+
+  async function detectTimezone() {
+    try {
+      const res = await fetch('https://ipapi.co/json/');
+      const data = await res.json();
+      if (data && data.timezone) {
+        userTimezone = data.timezone;
+        userCity = data.city || data.country_name || 'Your Location';
+        document.getElementById('time-location').textContent = `Local time in ${userCity}`;
+      } else {
+        document.getElementById('time-location').textContent = 'Local time in Colombo';
+      }
+    } catch (e) {
+      document.getElementById('time-location').textContent = 'Local time in Colombo';
+    }
+    updateLocalTime();
+    setInterval(updateLocalTime, 1000);
+  }
+
+  function updateLocalTime() {
+    const options = {
+      timeZone: userTimezone,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    };
+    const time = new Intl.DateTimeFormat([], options).format(new Date());
+    document.getElementById('local-time').textContent = time;
+  }
+
+  detectTimezone();
+
+  // Handle contact form submission
+  document.getElementById("contact-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const status = document.getElementById("form-status");
+    status.textContent = "Sending...";
+
+    // Collect form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://portfolio-4sl9.onrender.com/contact", { 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data) 
+      });
+
+
+      if (response.ok) {
+        status.textContent = "Thank you for your message. We'll be in touch soon!";
+        this.reset()
